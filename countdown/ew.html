@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        body {
+            background-color: pink;
+        }
+        
+        #countdown {
+            font-size: 35px;
+            font-weight: bold;
+            margin: auto;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            color: black;
+        }
+        
+        #quote {
+            margin: auto;
+            position: absolute;
+            font-size: 18px;
+            color: black;
+            margin-top: 35px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 55%;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown"></div>
+    <div id="quote"></div>
+    <script>
+        let targetDate = new Date("2024-12-31 23:59:59");
+
+
+        function updateCountdownAndQuote() {
+            let now = new Date();
+            let timeDiff = targetDate - now;
+
+            let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+
+            document.getElementById("countdown").innerHTML = `${days} day: ${hours} hours, ${minutes} min, ${seconds} seconds`;
+
+
+            let quotes = [
+                "Life is what happens when you're busy making other plans.",
+                "The whole secret of a successful life is to find out what is one’s destiny to do, and then do it",
+                "Everybody wants to be famous, but nobody wants to do the work. I live by that. You grind hard so you can play hard. At the end of the day, you put all the work in, and eventually it’ll pay off. It could be in a year, it could be in 30 years. Eventually, your hard work will pay off",
+
+            ];
+            let randomIndex = Math.floor(Math.random() * quotes.length);
+            let randomQuote = quotes[randomIndex];
+
+
+            document.getElementById("quote").innerHTML = `"${randomQuote}"`;
+        }
+
+
+        updateCountdownAndQuote();
+
+
+        setInterval(updateCountdownAndQuote, 1000);
+    </script>
+</body>
+</html>
